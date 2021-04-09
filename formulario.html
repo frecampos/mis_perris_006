@@ -53,14 +53,16 @@
                 <h2 class="form-titulo">Crear una Cuenta</h2>
 
                 <div class="contenedor-input">
-                    <input class="col-sm" type="text" name="txtNombre" id="" placeholder="ingrese nombre">
-                    <input class="col-sm" type="text" name="txtApellidos" id="" placeholder="ingrese apellidos">
-                    <input class="col-xl" type="email" name="txtEmail" id="" placeholder="ingrese correo">
-                    <input class="col-sm" type="text" name="txtUsuario" id="" placeholder="ingrese usuario">
-                    <input class="col-sm" type="password" name="txtPass" id="" placeholder="ingrese password">
-                    <input class="col-xl" type="text" name="txtTelefono" id="" placeholder="ingrese telefono">
+                    <input class="col-sm" type="text" name="txtNombre" id="txtNombre" placeholder="ingrese nombre" required minlength="2" maxlength="10">
+                    <input class="col-sm" type="text" name="txtApellidos" id="txtApellidos" placeholder="ingrese apellidos" required>
+                    <input class="col-xl" type="email" name="txtEmail" id="txtEmail" placeholder="ingrese correo" required>
+                    <input class="col-sm" type="text" name="txtUsuario" id="txtUsuario" placeholder="ingrese usuario" required>
+                    <input class="col-sm" type="password" name="txtPass" id="txtPass" placeholder="ingrese password" required>
+                    <input class="col-xl" type="text" name="txtTelefono" id="txtTelefono" placeholder="ingrese telefono" required>
+                    <input class="col-xl" type="text" name="txtRut" id="txtRut" placeholder="ingrese rut Ej. 12345678-9" required >
 
                     <input class="btn-registrar" type="submit" value="Registrar">
+                    <input class="btn-registrar" type="button" value="Validar Rut" onclick="validarut()">
                 </div>
             </form>
 
@@ -73,6 +75,8 @@
             <p>Mis Perris - Desarrollo Web</p>
         </div>
     </footer>
+
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>
