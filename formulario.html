@@ -63,15 +63,60 @@
                     <input class="col-sm" type="date" name="txtFechaNaci" id="txtFechaNaci">
 
                     <input class="btn-registrar" type="submit" value="Registrar">
+                    <input class="btn-registrar" type="button" value="Grabar"
+                    onclick="grabar()">
+                    <input class="btn-registrar" type="button" value="Listar"
+                    onclick="listar()">
                     <input class="btn-registrar" type="button" value="Validar Formulario" 
                      onclick="validarForm()">
                 </div>
             </form>
 
         </section>
+        <script src="js/usuario.js"></script>
+        <script>
+            var arreglo = new Array();
+            var ind=0;
 
+            function grabar() {
+                var rut= document.getElementById('txtRut').value;
+                var nombre = document.getElementById('txtNombre').value;
+                var apellidos = document.getElementById('txtApellidos').value;
+                var fecha = document.getElementById('txtFechaNaci').value;
+                usu = new usuario();
+                usu.setRut(rut);
+                usu.setNombre(nombre);
+                usu.setApellido(apellidos);
+                usu.setFecha(fecha);
+                console.log(usu.imprimir());
+                arreglo[ind] = JSON.stringify(usu);
+                localStorage.setItem('registros',arreglo);
+                alert('Grabo Usuario');
+                ind++;
+            }
+            function listar() {
+                var tabla = "<table border=1>";
+                tabla = tabla + "<tr> <td>Rut</td> <td>Nombre</td> <td>Apellido</td> <td>Fecha</td> </tr>";    
+                var datos = localStorage.getItem('registros');
+                var arreglo = new Array();
+                console.log(datos);
+                datos = datos.split('},{').join('};{');// reemplazar caracteres
+                console.log(datos);
+                arreglo = datos.split(';');
+                for (let index = 0; index < arreglo.length; index++) {
+                    var elemento = arreglo[index];
+                    var usuario = JSON.parse(elemento);
+                    tabla=tabla+"<tr> <td>"+usuario.rut+"</td> <td>"+usuario.nombre+"</td> <td>"+usuario.apellido+"</td> <td>"+usuario.fecha+"</td> </tr>";
+                    
+                }
+                tabla=tabla+"</table>";
+                document.getElementById('listados').innerHTML=tabla;
+            }
+        </script>
     </main>
+    <div id="listados">
 
+    </div>
     <footer>
         <div class="contenedor">
             <p>Mis Perris - Desarrollo Web</p>
